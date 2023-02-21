@@ -15,39 +15,40 @@ const TableHeader = () => {
   }
 
 
-//table body component
-const TableBody = () => {
-    return(
-<tbody>
-          <tr>
-            <td>Charlie</td>
-            <td>Janitor</td>
-          </tr>
-          <tr>
-            <td>Mac</td>
-            <td>Bouncer</td>
-          </tr>
-          <tr>
-            <td>Dee</td>
-            <td>Aspiring actress</td>
-          </tr>
-          <tr>
-            <td>Dennis</td>
-            <td>Bartender</td>
-          </tr>
-</tbody>
+//table body simple component
+const TableBody = (props) => {
 
-    )
+    
+    //iterate over the character data and create a row for each entry of the data.
+    //construct rows and use map to iterate over each row and wrapt it in an html table row
+    //registered an onclick listener to remove a character
+    const rows = props.data.map((row, index) => {
+
+    return (      
+    <tr key ={index}>
+    <td>{row.name}</td>
+    <td>{row.job}</td>
+    <td><button onClick={() => props.removeCharacter(index)}>Delete</button></td>
+    </tr>
+            )      
+
+    })
+    
+    return <tbody>{rows}</tbody>
+
 }
 
 
 // TABLE is our main component
 class Table extends Component {
   render() {
+    //read props passed in from App.js
+const {characterData, removeCharacter} = this.props;
+
     return (
       <table>
    <TableHeader/>
-   <TableBody/>
+   <TableBody data = {characterData} removeCharacter = {removeCharacter}/>
       </table>
     )
   }
