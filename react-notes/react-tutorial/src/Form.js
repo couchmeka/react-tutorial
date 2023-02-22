@@ -26,18 +26,22 @@ class Form extends Component {
     }
 
 
-     onFormSubmit = (event) => {
+    
+
+    onFormSubmit = (event) => {
 
     //standard for onSubmits
     event.preventDefault();
 
-//set the current state of our form to the handle submit
-     this.props.addCharacter(this.state);
+    //set the current state of our form to the handle submit
+    this.props.addCharacter(this.state);
 
      //clear inputs by setting form to initial state
-     this.setState(this.initalState);
+    this.setState(this.initalState);
 
     }
+
+
 
     render(){
       //hook in data from state 
@@ -47,7 +51,7 @@ class Form extends Component {
             <label for="name">Name: </label><br/>
             <input type="text" id="name" name="name" value={name} onChange={this.handleChange}/><br/>
             <label for="job">Job: </label><br/>
-            <input type="text" id="job" name="job" value = {job} onChange={this.handleChange}/><br/>
+            <input type="text" id="job" name="job" value={job} onChange={this.handleChange}/><br/>
             <button type="submit">
                 Submit
             </button>
